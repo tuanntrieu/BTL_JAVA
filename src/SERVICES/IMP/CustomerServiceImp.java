@@ -96,7 +96,7 @@ public class CustomerServiceImp implements CustomerService {
 
     @Override
     public void output(Customer customer) {
-        System.out.printf("%-15s %-30s %-15d %-15s %-20s %-50s %-15s\n", customer.getId(), customer.getName(), customer.getAge(), customer.getAddress(), customer.getPhoneNumber(), customer.getEmail(), customer.getUsername());
+        System.out.printf("%-15s %-30s %-15d %-15s %-20s %-50s %-15s\n", customer.getCustomerId(), customer.getName(), customer.getAge(), customer.getAddress(), customer.getPhoneNumber(), customer.getEmail(), customer.getUsername());
     }
 
     public static void main(String[] args) {

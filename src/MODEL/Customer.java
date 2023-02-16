@@ -3,7 +3,7 @@ package MODEL;
 
 public class Customer {
 
-    private String id;
+    private String customerId;
     private String name;
     private int age;
     private String address;
@@ -14,8 +14,8 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String id,String name, int age, String address, String phoneNumber, String email, String username) {
-        this.id=id;
+    public Customer(String customerId,String name, int age, String address, String phoneNumber, String email, String username) {
+        this.customerId=customerId;
         this.name = name;
         this.age = age;
         this.address = address;
@@ -24,14 +24,17 @@ public class Customer {
         this.username = username;
     }
 
-    public String getId() {
-        return id;
+    
+
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
+ 
     
     public String getUsername() {
         return username;

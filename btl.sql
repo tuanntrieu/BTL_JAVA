@@ -17,7 +17,7 @@ INSERT INTO Account VALUES
 SELECT * FROM Account
 
 CREATE TABLE Customer(
-id varchar(10) PRIMARY KEY,
+customerId varchar(10) PRIMARY KEY,
 name nvarchar(40) NOT NUll,
 age int NOT NULL,
 address nvarchar(30) ,
@@ -44,6 +44,7 @@ number int NOT NULL,
 brand varchar(20) NOT NULL,
 memory int NOT NULL)
 drop table Mobile
+drop table Customer
 
 INSERT INTO Mobile VALUES
 ('SP01','Iphone 11',N'Đen',11.2,21,'Apple',64),
@@ -109,5 +110,12 @@ Select * from mobile
 
 CREATE TABLE Bill(
 billId varchar(20) PRIMARY KEY,
-
+customerId varchar(10) FOREIGN KEY REFERENCES Customer(customerID),
+nameKH nvarchar(50) NOT NULL,
+id varchar(10) FOREIGN KEY REFERENCES Mobile(id),
+name varchar(50) NOT NULL,
+price float NOT NULL,
+time varchar(50) NOT NULL
 )
+DROP TABLE Bill
+SELECT * FROM Bill

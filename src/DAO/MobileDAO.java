@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MobileDAO {
-
+    
     public void addMobile(Mobile b) throws SQLException {
         String sql = "INSERT INTO Mobile VALUES(?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = JDBCConnector.getJDBCConnection().prepareStatement(sql);
@@ -21,7 +21,7 @@ public class MobileDAO {
         preparedStatement.setInt(7, b.getMemory());
         preparedStatement.executeUpdate();
     }
-
+    
     public List<Mobile> getMobile() {
         String sql = "SELECT * FROM Mobile";
         List<Mobile> list = new ArrayList<>();
@@ -52,7 +52,7 @@ public class MobileDAO {
         }
         return null;
     }
-
+    
     public int updateMobile(String id, double price) {
         String sql = "UPDATE Mobile SET price=? WHERE id=?";
         try {
@@ -61,13 +61,13 @@ public class MobileDAO {
             preparedStatement.setString(2, id);
             int executeUpdate = preparedStatement.executeUpdate();
             return executeUpdate;
-
+            
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return 0;
     }
-
+    
     public int deleteMobile(String id) throws SQLException {
         String sql = "DELETE FROM Mobile WHERE id=?";
         PreparedStatement preparedStatement = JDBCConnector.getJDBCConnection().prepareStatement(sql);
@@ -75,11 +75,11 @@ public class MobileDAO {
         int executeUpdate = preparedStatement.executeUpdate();
         return executeUpdate;
     }
-
+    
     public List<Mobile> findByName(String name) {
         List<Mobile> list = new ArrayList<>();
         String sql = "SELECT * FROM Mobile WHERE name LIKE ?";
-
+        
         try {
             PreparedStatement preparedStatement = JDBCConnector.getJDBCConnection().prepareStatement(sql);
             preparedStatement.setString(1, name + "%");
@@ -107,15 +107,15 @@ public class MobileDAO {
         }
         return null;
     }
-
+    
     public List<Mobile> findByPrice(double price) {
         List<Mobile> list = new ArrayList<>();
         String sql = "SELECT * FROM Mobile WHERE price  BETWEEN (? - 0.99) AND (?+0.99)";
-
+        
         try {
             PreparedStatement preparedStatement = JDBCConnector.getJDBCConnection().prepareStatement(sql);
             preparedStatement.setDouble(1, price);
-             preparedStatement.setDouble(2, price);
+            preparedStatement.setDouble(2, price);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Mobile tmp = new Mobile();
@@ -140,13 +140,56 @@ public class MobileDAO {
         }
         return null;
     }
-    public static void main(String[] args) {
-        MobileDAO a =new MobileDAO();
-        List<Mobile> list=a.getMobile();
-        for(Mobile tmp :list){
-            System.out.println(tmp.getName());
+    
+    public int updateNumber(String id) throws SQLException {
+        String sql = "UPDATE Mobile SET number=(number-1) WHERE id=?";
+        PreparedStatement preparedStatement = JDBCConnector.getJDBCConnection().prepareStatement(sql);
+        preparedStatement.setString(1, id);
+        int executeUpdate = preparedStatement.executeUpdate();
+        return executeUpdate;
+    }
+    
+    public int getNumber(String id) throws SQLException {
+        String sql = "SELECT number FROM Mobile WHERE id=?";
+        PreparedStatement preparedStatement = JDBCConnector.getJDBCConnection().prepareStatement(sql);
+        preparedStatement.setString(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            return resultSet.getInt("number");
         }
+        return 0;
+    }
+    
+    public String getName(String id) throws SQLException {
+        String sql = "SELECT name FROM Mobile WHERE id=?";
+        PreparedStatement preparedStatement = JDBCConnector.getJDBCConnection().prepareStatement(sql);
+        preparedStatement.setString(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            return resultSet.getString("name");
+        }
+        return null;
+    }
+    
+    public double getPrice(String id) throws SQLException {
+        String sql = "SELECT price FROM Mobile WHERE id=?";
+        PreparedStatement preparedStatement = JDBCConnector.getJDBCConnection().prepareStatement(sql);
+        preparedStatement.setString(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            return resultSet.getDouble("price");
+        }
+        return 0;
+    }
+    
+    public static void main(String[] args) throws SQLException {
+        MobileDAO a = new MobileDAO();
+//        List<Mobile> list = a.getMobile();
+//        for (Mobile tmp : list) {
+//            System.out.println(tmp.getName());
+//        }
+        System.out.println(a.updateNumber("SP01"));
         
     }
-
+    
 }
