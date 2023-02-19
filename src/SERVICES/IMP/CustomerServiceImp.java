@@ -49,7 +49,7 @@ public class CustomerServiceImp implements CustomerService {
                 customer.setPhoneNumber(phone);
                 break;
             } else {
-                System.out.println(" Số điện thoại không hợp lệ, nhập lại.");
+                System.out.println("Số điện thoại không hợp lệ, nhập lại.");
             }
         } while (!matcher.find());
         String email_regex = "^[a-z0-9-]+@[a-z0-9]+\\.[a-z]{2,4}$";
@@ -63,7 +63,7 @@ public class CustomerServiceImp implements CustomerService {
                 customer.setEmail(email);
                 break;
             } else {
-                System.out.println(" Email không hợp lệ, nhập lại.");
+                System.out.println("Email không hợp lệ, nhập lại.");
             }
         } while (!matcher.find());
         String username_regex = "^[\\w+]{6,}$";
@@ -88,7 +88,7 @@ public class CustomerServiceImp implements CustomerService {
                     break;
                 }
             } else {
-                System.out.println(" Tên tài khoản phải từ 6 kí tự trở lên, không dấu, không ký tự đặc biệt.");
+                System.out.println("Tên tài khoản phải từ 6 kí tự trở lên, không dấu, không ký tự đặc biệt.");
             }
 
         } while (!matcher.find() || !check3);

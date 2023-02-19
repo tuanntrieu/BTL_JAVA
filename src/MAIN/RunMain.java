@@ -15,7 +15,7 @@ public class RunMain {
             System.out.println("1.Đăng nhập");
             System.out.println("2.Đăng ký");
             System.out.println("3.Quên mật khẩu");
-            System.out.print(" Nhập lựa chon của bạn : ");
+            System.out.print("Nhập lựa chon của bạn : ");
             int chose = new Scanner(System.in).nextInt();
             switch (chose) {
                 case 1: {

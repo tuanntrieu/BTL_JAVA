@@ -8,12 +8,10 @@ import MODEL.Account;
 import MODEL.Bill;
 import MODEL.Customer;
 import MODEL.Mobile;
-import SERVICES.IMP.AccountServiceImp;
 import SERVICES.IMP.CustomerServiceImp;
 import SERVICES.IMP.MobileServiceImp;
 import java.sql.SQLException;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -234,7 +232,29 @@ public class MainPerson {
         for (Mobile tmp : list) {
             MImp.output(tmp);
         }
-        Buy(list, username);
+        System.out.println("1.Mua\n"
+                + "2.Thoát");
+        int choose;
+        boolean check = false;
+        do {
+            choose = scanner.nextInt();
+            scanner.nextLine();
+            switch (choose) {
+                case 1: {
+                    Buy(list, username);
+                    check = true;
+                    break;
+                }
+                default: {
+                    System.out.println("Mời bạn chọn lại.");
+                    break;
+                }
+            }
+            if (check) {
+                choose = 2;
+            }
+        } while (choose != 2);
+
     }
 
     public static void Buy(List<Mobile> list, String username) throws SQLException {
@@ -377,7 +397,21 @@ public class MainPerson {
             for (Mobile tmp : list) {
                 mImp.output(tmp);
             }
-            Buy(list, username);
+            int choose;
+            do {
+                choose = scanner.nextInt();
+                scanner.nextLine();
+                switch (choose) {
+                    case 1: {
+                        Buy(list, username);
+                        break;
+                    }
+                    default: {
+                        System.out.println("Mời bạn chọn lại.");
+                        break;
+                    }
+                }
+            } while (choose != 2);
         }
     }
 
@@ -395,7 +429,21 @@ public class MainPerson {
             for (Mobile tmp : list) {
                 mImp.output(tmp);
             }
-            Buy(list, username);
+            int choose;
+            do {
+                choose = scanner.nextInt();
+                scanner.nextLine();
+                switch (choose) {
+                    case 1: {
+                        Buy(list, username);
+                        break;
+                    }
+                    default: {
+                        System.out.println("Mời bạn chọn lại.");
+                        break;
+                    }
+                }
+            } while (choose != 2);
         }
 
     }
@@ -448,7 +496,21 @@ public class MainPerson {
         for (Mobile tmp : list) {
             mImp.output(tmp);
         }
-        Buy(list, username);
+        int choose;
+        do {
+            choose = scanner.nextInt();
+            scanner.nextLine();
+            switch (choose) {
+                case 1: {
+                    Buy(list, username);
+                    break;
+                }
+                default: {
+                    System.out.println("Mời bạn chọn lại.");
+                    break;
+                }
+            }
+        } while (choose != 2);
     }
 
     public static void showBill() throws SQLException {

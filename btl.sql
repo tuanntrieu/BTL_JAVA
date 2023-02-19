@@ -1,6 +1,6 @@
 ﻿CREATE DATABASE QLShop
 USE QLShop
-
+drop database QLShop
 CREATE TABLE Account(
 username varchar(30) PRIMARY KEY,
 password varchar(30) NOT NULL,
@@ -9,12 +9,12 @@ role varchar(10) NOT NULL
 
 INSERT INTO Account VALUES
 ('tuantrieu','tuan03nd','admin'),
-('thangnohope','thang04nd','user'),
-('tienhetthoi','tien03nd','user'),
-('mangiaoan','man04nd','user'),
-('vinhne','221222','user')
+('thangpham','thang04nd','user'),
+('tienpham','tien03nd','user'),
+('huyman','man04nd','user'),
+('quangvinh','221222','user')
 
-SELECT * FROM Account
+
 
 CREATE TABLE Customer(
 customerId varchar(10) PRIMARY KEY,
@@ -28,12 +28,12 @@ username varchar(30) FOREIGN KEY REFERENCES  Account(username)
 
 INSERT INTO Customer VALUES
 ('AD1',N'Triệu Đăng Tuấn',20,N'Nam Định','0968712369','trieudangtuan18032003@gmail.com','tuantrieu'),
-('KH01',N'Phạm Đức Thắng',19,N'Nam Định','0364828548','thang2004@gmail.com','thangnohope'),
-('KH02',N'Phạm Trung Tiến',20,N'Nam Định','0387262203','tien2003@gmail.com','tienhetthoi'),
-('KH03',N'Phạm Huy Mân',19,N'Nam Định','0123456789','mangiaoan@gmail.com','mangiaoan'),
-('KH04',N'Nguyễn Hoàng Quang Vinh',20,N'Nam Định','0944283594','vinhne@gmail.com','vinhne')
-SELECT * From CUstomer
-SELECT * From Account
+('KH01',N'Phạm Đức Thắng',19,N'Nam Định','0364828548','thang2004@gmail.com','thangpham'),
+('KH02',N'Phạm Trung Tiến',20,N'Nam Định','0387262203','tien2003@gmail.com','tienpham'),
+('KH03',N'Phạm Huy Mân',19,N'Nam Định','0123456789','mangiaoan@gmail.com','huyman'),
+('KH04',N'Nguyễn Hoàng Quang Vinh',20,N'Hà Tĩnh','0944283594','vinhne@gmail.com','quangvinh')
+
+
 CREATE TABLE Mobile 
 (
 id varchar(10) PRIMARY KEY,
@@ -43,8 +43,7 @@ price float NOT NULL,
 number int NOT NULL,
 brand varchar(20) NOT NULL,
 memory int NOT NULL)
-drop table Mobile
-drop table Customer
+
 
 INSERT INTO Mobile VALUES
 ('SP01','Iphone 11',N'Đen',11.2,21,'Apple',64),
@@ -106,7 +105,7 @@ INSERT INTO Mobile VALUES
 ('SP57', 'Realme C3', N'Đen', 2.5, 10, 'Realme', 64),
 ('SP58', 'Realme 6', N'Trắng', 4.5, 10, 'Realme', 128)
 
-Select * from mobile
+
 
 CREATE TABLE Bill(
 billId varchar(20) PRIMARY KEY,
@@ -117,5 +116,8 @@ name varchar(50) NOT NULL,
 price float NOT NULL,
 time varchar(50) NOT NULL
 )
-DROP TABLE Bill
+
 SELECT * FROM Bill
+SELECT * From Customer
+SELECT * From Account
+SELECT * FROM Mobile
